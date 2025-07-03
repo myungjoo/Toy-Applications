@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Forwarder</string>
+    <string name="title_forwarding_rules">Forwarding Rules</string>
+    <string name="add_rule">Add Rule</string>
+    <string name="edit_rule">Edit Rule</string>
+    <string name="delete_rule">Delete Rule</string>
+    <string name="sender_number">Sender Number</string>
+    <string name="message_content">Message Content</string>
+    <string name="forward_to_number">Forward To Number</string>
+    <string name="partial_match">Partial Match</string>
+    <string name="exact_match">Exact Match</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="enable_monitoring">Enable SMS Monitoring</string>
+    <string name="disable_monitoring">Disable SMS Monitoring</string>
+    <string name="monitoring_enabled">SMS monitoring is enabled</string>
+    <string name="monitoring_disabled">SMS monitoring is disabled</string>
+    <string name="permission_required">SMS permissions are required for this app to work</string>
+    <string name="grant_permissions">Grant Permissions</string>
+    <string name="no_rules">No forwarding rules configured</string>
+    <string name="rule_added">Forwarding rule added</string>
+    <string name="rule_updated">Forwarding rule updated</string>
+    <string name="rule_deleted">Forwarding rule deleted</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="field_required">This field is required</string>
+    <string name="sms_forwarded">SMS forwarded to %s</string>
+    <string name="forward_failed">Failed to forward SMS</string>
+    <string name="monitoring_service_notification">SMS Forwarder is monitoring messages</string>
+    <string name="notification_channel_name">SMS Monitoring</string>
+    <string name="notification_channel_description">Notification for SMS monitoring service</string>
+</resources>
