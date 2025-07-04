@@ -63,7 +63,7 @@ public class SmsForwardingService extends Service {
             // Split message if it's too long
             if (forwardedMessage.length() > 160) {
                 List<String> messageParts = smsManager.divideMessage(forwardedMessage);
-                smsManager.sendMultipartTextMessage(forwardToNumber, null, messageParts, null, null);
+                smsManager.sendMultipartTextMessage(forwardToNumber, null, new java.util.ArrayList<>(messageParts), null, null);
             } else {
                 smsManager.sendTextMessage(forwardToNumber, null, forwardedMessage, null, null);
             }

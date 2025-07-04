@@ -18,6 +18,7 @@ public class ForwardingRule {
         this.isEnabled = true;
     }
     
+    @androidx.room.Ignore
     public ForwardingRule(String senderNumber, boolean senderExactMatch, 
                          String messageContent, String forwardToNumber) {
         this.senderNumber = senderNumber;
