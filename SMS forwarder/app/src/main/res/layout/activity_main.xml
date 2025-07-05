@@ -46,6 +46,15 @@
                 android:visibility="gone"
                 style="@style/ButtonStyle" />
 
+            <Button
+                android:id="@+id/btnBatteryOptimization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Disable Battery Optimization"
+                android:visibility="gone"
+                style="@style/ButtonStyle" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
