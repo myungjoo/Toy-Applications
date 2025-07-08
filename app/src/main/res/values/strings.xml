@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Podcast Generator</string>
+    <string name="enter_urls">Enter URLs</string>
+    <string name="urls_hint">URLs (one per line)</string>
+    <string name="podcast_style">Podcast Style</string>
+    <string name="generate_script">Generate Podcast Script</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="loading">Loading...</string>
+    <string name="extracting_content">Extracting content from URLs...</string>
+    <string name="generating_script">Generating podcast script...</string>
+    <string name="error_no_urls">Please provide valid URLs</string>
+    <string name="error_content_extraction">Failed to extract content from any of the provided URLs</string>
+    <string name="error_tts_not_ready">Text-to-speech is not ready</string>
+    <string name="error_no_script">No script available to play</string>
+    <string name="new_script">New Script</string>
+    <string name="script">Script</string>
+    <string name="sources">Sources</string>
+    <string name="segments">Segments</string>
+    <string name="currently_playing">Currently playing</string>
+    <string name="segment_of">Segment %1$d of %2$d</string>
+    
+    <!-- Podcast styles -->
+    <string name="style_conversation">Conversation</string>
+    <string name="style_qna">Q&amp;A</string>
+    <string name="style_debate">Debate</string>
+    <string name="style_interview">Interview</string>
+</resources>
