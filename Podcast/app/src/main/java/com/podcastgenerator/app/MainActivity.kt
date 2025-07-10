@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.sp
 import com.podcastgenerator.app.models.*
 import com.podcastgenerator.app.ui.theme.PodcastGeneratorTheme
 import com.podcastgenerator.app.viewmodel.PodcastViewModel
+import com.podcastgenerator.app.viewmodel.PodcastUIState
+import com.podcastgenerator.app.services.VoiceService
 
 class MainActivity : ComponentActivity() {
     
@@ -434,6 +436,7 @@ fun PlaybackControls(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScriptSegmentItem(
     segment: ScriptSegment,

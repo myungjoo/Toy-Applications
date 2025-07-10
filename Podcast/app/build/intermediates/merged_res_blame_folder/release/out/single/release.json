@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.podcastgenerator.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
+        "source": "com.podcastgenerator.app-main-52:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.podcastgenerator.app-merged_res-51:/drawable_ic_launcher.xml.flat",
+        "source": "com.podcastgenerator.app-main-52:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "com.podcastgenerator.app-merged_res-51:/xml_backup_rules.xml.flat",
+        "source": "com.podcastgenerator.app-main-52:/xml/backup_rules.xml"
+    }
+]
