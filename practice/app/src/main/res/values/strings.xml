@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Character App</string>
+    <string name="seungpyo_name">함승표</string>
+    <string name="seoyeon_name">함서연</string>
+    <string name="meeting_greeting">안녕하세요!</string>
+    <string name="meeting_response">안녕! 만나서 반가워요!</string>
+    <string name="farewell">그럼 또 만나요!</string>
+</resources>
