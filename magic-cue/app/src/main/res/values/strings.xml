@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Magic Cue</string>
+    <string name="conversation_notes_hint">통화 메모, 감정, 맥락 등을 입력하세요</string>
+    <string name="scenario_label">상황</string>
+    <string name="persona_label">내 페르소나</string>
+    <string name="tone_label">톤</string>
+    <string name="provider_label">LLM 제공자</string>
+    <string name="api_key_label">API 키</string>
+    <string name="model_label">모델</string>
+    <string name="prompt_generate">큐 생성</string>
+    <string name="reset_context">컨텍스트 초기화</string>
+</resources>
