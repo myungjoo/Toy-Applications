@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WebAgent</string>
+    <string name="settings">설정</string>
+    <string name="gemini_api_key">Gemini API Key</string>
+    <string name="chatgpt_api_key">ChatGPT API Key</string>
+    <string name="chatgpt_api_url">ChatGPT API URL</string>
+    <string name="llm_provider">LLM Provider</string>
+    <string name="enable_sms_monitoring">SMS 모니터링 활성화</string>
+    <string name="enable_notification_monitoring">알림 모니터링 활성화</string>
+    <string name="enable_keyboard_monitoring">키보드 입력 모니터링 활성화</string>
+    <string name="enable_email_monitoring">이메일 모니터링 활성화</string>
+    <string name="enable_overlay">오버레이 활성화</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="accessibility_service_description">키보드 입력을 모니터링하여 사용자 활동을 분석합니다.</string>
+</resources>
