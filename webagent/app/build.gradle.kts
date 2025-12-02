@@ -40,7 +40,7 @@ android {
                 "proguard-rules.pro"
             )
             // 서명이 설정된 경우에만 사용
-            if (signingConfigs.getByName("release").storePassword.isNotEmpty()) {
+            if (!signingConfigs.getByName("release").storePassword.isNullOrEmpty()) {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
