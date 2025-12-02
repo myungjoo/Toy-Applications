@@ -42,14 +42,17 @@ jobs:
       uses: android-actions/setup-android@v3
       
     - name: Grant execute permission for gradlew
+      working-directory: webagent
       run: chmod +x gradlew
       
     - name: Build debug APK
       if: github.event.inputs.build_type == 'both' || github.event.inputs.build_type == 'debug' || github.event_name != 'workflow_dispatch'
+      working-directory: webagent
       run: ./gradlew assembleDebug
       
     - name: Build release APK
       if: github.event.inputs.build_type == 'both' || github.event.inputs.build_type == 'release' || github.event_name != 'workflow_dispatch'
+      working-directory: webagent
       run: ./gradlew assembleRelease
       continue-on-error: true
       
@@ -58,7 +61,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-debug-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: webagent/app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
         
     - name: Upload release APK
@@ -66,6 +69,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-release-apk
-        path: app/build/outputs/apk/release/app-release.apk
+        path: webagent/app/build/outputs/apk/release/app-release.apk
         retention-days: 30
         if-no-files-found: ignore
