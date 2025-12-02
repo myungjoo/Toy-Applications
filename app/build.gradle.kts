@@ -22,6 +22,16 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            // GitHub Actions에서 환경 변수로 설정 가능
+            storeFile = file(System.getenv("KEYSTORE_FILE") ?: "release.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+            keyAlias = System.getenv("KEY_ALIAS") ?: ""
+            keyPassword = System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+    
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -29,6 +39,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // 서명이 설정된 경우에만 사용
+            if (signingConfigs.getByName("release").storePassword.isNotEmpty()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
         debug {
             applicationIdSuffix = ".dev"
