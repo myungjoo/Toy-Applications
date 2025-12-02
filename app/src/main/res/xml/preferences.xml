@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="LLM 설정">
+        <ListPreference
+            app:key="llm_provider"
+            app:title="LLM Provider"
+            app:summary="사용할 LLM 서비스 선택"
+            app:entries="@array/llm_providers"
+            app:entryValues="@array/llm_provider_values"
+            app:defaultValue="gemini" />
+
+        <EditTextPreference
+            app:key="gemini_api_key"
+            app:title="Gemini API Key"
+            app:summary="Google Gemini API 키를 입력하세요"
+            app:dialogTitle="Gemini API Key"
+            app:dialogMessage="API 키를 입력하세요"
+            app:inputType="text" />
+
+        <EditTextPreference
+            app:key="chatgpt_api_key"
+            app:title="ChatGPT API Key"
+            app:summary="OpenAI ChatGPT API 키를 입력하세요"
+            app:dialogTitle="ChatGPT API Key"
+            app:dialogMessage="API 키를 입력하세요"
+            app:inputType="text" />
+
+        <EditTextPreference
+            app:key="chatgpt_api_url"
+            app:title="ChatGPT API URL"
+            app:summary="ChatGPT API 엔드포인트 URL"
+            app:dialogTitle="ChatGPT API URL"
+            app:dialogMessage="API URL을 입력하세요"
+            app:inputType="textUri"
+            app:defaultValue="https://api.openai.com/v1/chat/completions" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="모니터링 설정">
+        <SwitchPreferenceCompat
+            app:key="enable_sms_monitoring"
+            app:title="SMS 모니터링"
+            app:summary="수신/발신 SMS 모니터링 활성화"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="enable_notification_monitoring"
+            app:title="알림 모니터링"
+            app:summary="앱 알림 모니터링 활성화"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="enable_keyboard_monitoring"
+            app:title="키보드 입력 모니터링"
+            app:summary="키보드 입력 모니터링 활성화 (접근성 서비스 필요)"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="enable_email_monitoring"
+            app:title="이메일 모니터링"
+            app:summary="이메일 수신 모니터링 활성화"
+            app:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="UI 설정">
+        <SwitchPreferenceCompat
+            app:key="enable_overlay"
+            app:title="오버레이 표시"
+            app:summary="추천 사항을 오버레이로 표시"
+            app:defaultValue="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

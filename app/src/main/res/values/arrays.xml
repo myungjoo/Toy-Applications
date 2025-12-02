@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="llm_providers">
+        <item>Google Gemini</item>
+        <item>OpenAI ChatGPT</item>
+    </array>
+    
+    <array name="llm_provider_values">
+        <item>gemini</item>
+        <item>chatgpt</item>
+    </array>
+</resources>
