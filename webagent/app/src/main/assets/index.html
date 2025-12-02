@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAgent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .recommendation-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .recommendation-item.high-priority {
+            border-left-color: #e74c3c;
+        }
+        
+        .recommendation-item.medium-priority {
+            border-left-color: #f39c12;
+        }
+        
+        .recommendation-item h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation-item p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .recommendation-item .meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .event-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .event-item .type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 WebAgent</h1>
+            <p>당신의 스마트폰 활동을 분석하여 유용한 추천을 제공합니다</p>
+            <button class="btn btn-secondary" onclick="openSettings()">설정</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="eventCount">0</h3>
+                <p>수집된 이벤트</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="recommendationCount">0</h3>
+                <p>추천 사항</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 추천 사항</h2>
+            <div id="recommendations">
+                <div class="loading">로딩 중...</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📱 최근 활동</h2>
+            <div id="events">
+                <div class="loading">로딩 중...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let events = [];
+        let recommendations = [];
+        
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleString('ko-KR');
+        }
+        
+        function getPriorityClass(priority) {
+            if (priority >= 2) return 'high-priority';
+            if (priority >= 1) return 'medium-priority';
+            return '';
+        }
+        
+        function getTypeLabel(type) {
+            const labels = {
+                'REMINDER': '⏰ 리마인더',
+                'EXERCISE_SUGGESTION': '💪 운동 추천',
+                'MESSAGE_TO_SEND': '💬 메시지',
+                'EMAIL_TO_SEND': '📧 이메일',
+                'SETTINGS_CHANGE': '⚙️ 설정'
+            };
+            return labels[type] || type;
+        }
+        
+        function renderRecommendations() {
+            const container = document.getElementById('recommendations');
+            const countEl = document.getElementById('recommendationCount');
+            
+            countEl.textContent = recommendations.length;
+            
+            if (recommendations.length === 0) {
+                container.innerHTML = '<div class="loading">추천 사항이 없습니다</div>';
+                return;
+            }
+            
+            container.innerHTML = recommendations.map(rec => `
+                <div class="recommendation-item ${getPriorityClass(rec.priority)}">
+                    <h3>${getTypeLabel(rec.type)}: ${rec.title}</h3>
+                    <p>${rec.description}</p>
+                    <div class="meta">${formatDate(rec.timestamp)}</div>
+                    <button class="btn" onclick="markAsRead(${rec.id})">확인</button>
+                </div>
+            `).join('');
+        }
+        
+        function renderEvents() {
+            const container = document.getElementById('events');
+            const countEl = document.getElementById('eventCount');
+            
+            countEl.textContent = events.length;
+            
+            if (events.length === 0) {
+                container.innerHTML = '<div class="loading">이벤트가 없습니다</div>';
+                return;
+            }
+            
+            container.innerHTML = events.slice(0, 20).map(event => `
+                <div class="event-item">
+                    <span class="type">${event.type}</span>
+                    <span>${event.content}</span>
+                    <div style="font-size: 12px; color: #999; margin-top: 5px;">
+                        ${formatDate(event.timestamp)}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function markAsRead(id) {
+            if (typeof Android !== 'undefined') {
+                Android.markRecommendationAsRead(id);
+            }
+            recommendations = recommendations.filter(r => r.id !== id);
+            renderRecommendations();
+        }
+        
+        function openSettings() {
+            if (typeof Android !== 'undefined') {
+                Android.openSettings();
+            }
+        }
+        
+        function loadData() {
+            if (typeof Android !== 'undefined') {
+                Android.getRecommendations(function(data) {
+                    try {
+                        recommendations = JSON.parse(data);
+                        renderRecommendations();
+                    } catch (e) {
+                        console.error('Error parsing recommendations:', e);
+                    }
+                });
+                
+                Android.getEvents(function(data) {
+                    try {
+                        events = JSON.parse(data);
+                        renderEvents();
+                    } catch (e) {
+                        console.error('Error parsing events:', e);
+                    }
+                });
+            }
+        }
+        
+        // 초기 로드
+        loadData();
+        
+        // 주기적으로 새로고침
+        setInterval(loadData, 30000); // 30초마다
+    </script>
+</body>
+</html>
