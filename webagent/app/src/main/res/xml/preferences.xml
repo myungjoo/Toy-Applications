@@ -15,16 +15,14 @@
             app:title="Gemini API Key"
             app:summary="Google Gemini API 키를 입력하세요"
             app:dialogTitle="Gemini API Key"
-            app:dialogMessage="API 키를 입력하세요"
-            app:inputType="text" />
+            app:dialogMessage="API 키를 입력하세요" />
 
         <EditTextPreference
             app:key="chatgpt_api_key"
             app:title="ChatGPT API Key"
             app:summary="OpenAI ChatGPT API 키를 입력하세요"
             app:dialogTitle="ChatGPT API Key"
-            app:dialogMessage="API 키를 입력하세요"
-            app:inputType="text" />
+            app:dialogMessage="API 키를 입력하세요" />
 
         <EditTextPreference
             app:key="chatgpt_api_url"
@@ -32,7 +30,6 @@
             app:summary="ChatGPT API 엔드포인트 URL"
             app:dialogTitle="ChatGPT API URL"
             app:dialogMessage="API URL을 입력하세요"
-            app:inputType="textUri"
             app:defaultValue="https://api.openai.com/v1/chat/completions" />
     </PreferenceCategory>
 
