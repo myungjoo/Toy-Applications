@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="LLM 설정">
         <ListPreference
@@ -16,7 +17,7 @@
             app:summary="Google Gemini API 키를 입력하세요"
             app:dialogTitle="Gemini API Key"
             app:dialogMessage="API 키를 입력하세요"
-            app:inputType="text" />
+            android:inputType="text" />
 
         <EditTextPreference
             app:key="chatgpt_api_key"
@@ -24,7 +25,7 @@
             app:summary="OpenAI ChatGPT API 키를 입력하세요"
             app:dialogTitle="ChatGPT API Key"
             app:dialogMessage="API 키를 입력하세요"
-            app:inputType="text" />
+            android:inputType="text" />
 
         <EditTextPreference
             app:key="chatgpt_api_url"
@@ -32,7 +33,7 @@
             app:summary="ChatGPT API 엔드포인트 URL"
             app:dialogTitle="ChatGPT API URL"
             app:dialogMessage="API URL을 입력하세요"
-            app:inputType="textUri"
+            android:inputType="textUri"
             app:defaultValue="https://api.openai.com/v1/chat/completions" />
     </PreferenceCategory>
 
