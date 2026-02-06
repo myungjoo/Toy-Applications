@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Xlinker --dependency-file=CMakeFiles/llm_runner.dir/link.d CMakeFiles/llm_runner.dir/src/main.cpp.o -o llm_runner  -Wl,-rpath,/workspace/llm/build/bin bin/libllama.so bin/libggml.so bin/libggml-cpu.so bin/libggml-base.so

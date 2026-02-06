@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -Xlinker --dependency-file=CMakeFiles/ggml.dir/link.d -shared -Wl,-soname,libggml.so -o ../../../../bin/libggml.so "CMakeFiles/ggml.dir/ggml-backend-reg.cpp.o"  -Wl,-rpath,/workspace/llm/build/bin: -ldl ../../../../bin/libggml-cpu.so ../../../../bin/libggml-base.so
